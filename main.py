@@ -1,9 +1,10 @@
 import csv
 import calendar
+from io import StringIO
 from zk import ZK, const
 from datetime import datetime
 from collections import defaultdict
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, Response
 
 # Device configuration
 DEVICE_IP = '192.168.1.201'
@@ -195,21 +196,60 @@ def view_attendance():
 
 @app.route("/attendance/export", methods=["GET"])
 def export_attendance():
-    filename = "attendance.csv"
-    with open(filename, "w", newline="") as csvfile:
-        fieldnames = ["user_id", "name", "timestamp"]
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-        writer.writeheader()
+    conn = None
+    zk = ZK(DEVICE_IP, port=DEVICE_PORT)
+    try:
+        conn = zk.connect()
+        conn.disable_device()
 
-        for log in attendance_logs:
-            user_name = users.get(log["user_id"], {}).get("name", "Unknown")
-            writer.writerow({
-                "user_id": log["user_id"],
-                "name": user_name,
-                "timestamp": log["timestamp"]
-            })
+        # Fetch attendance logs and users
+        attendance = conn.get_attendance()
+        users = conn.get_users()
+        conn.enable_device()
 
-    return jsonify({"message": f"Attendance exported to {filename}!"})
+        # Create a mapping of user_id to username
+        user_map = {user.user_id: user.name.strip() or "Unknown" for user in users}
+
+        # Get current month and year
+        current_month = datetime.now().month
+        current_year = datetime.now().year
+
+        # Get the number of days in the current month
+        _, num_days = calendar.monthrange(current_year, current_month)
+
+        # Initialize attendance data for all users
+        monthly_attendance = defaultdict(lambda: ["Absent"] * num_days)  # Default all days to "Absent"
+
+        # Process attendance logs
+        for att in attendance:
+            if att.timestamp.year == current_year and att.timestamp.month == current_month:
+                day = att.timestamp.day  # Get the day of the month (1-31)
+                user_id = att.user_id
+                monthly_attendance[user_id][day - 1] = "Present"
+
+        # Prepare CSV content
+        output = StringIO()
+        writer = csv.writer(output)
+
+        # Write header row with days of the month
+        header = ["User ID", "Username"] + [f"Day {i}" for i in range(1, num_days + 1)]
+        writer.writerow(header)
+
+        # Write attendance data for each user
+        for user_id, days in monthly_attendance.items():
+            writer.writerow([user_id, user_map.get(user_id, "Unknown")] + days)
+
+        # Send the CSV as a downloadable response
+        output.seek(0)
+        response = Response(output.getvalue(), mimetype="text/csv")
+        response.headers["Content-Disposition"] = f"attachment; filename=attendance_{current_year}_{current_month}.csv"
+        return response
+
+    except Exception as e:
+        return jsonify({'error': str(e)})
+    finally:
+        if conn:
+            conn.disconnect()
 
 #adding fingerprint of particular user
 @app.route("/users/<user_id>/add_fingerprint", methods=["POST"])
