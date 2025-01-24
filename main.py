@@ -167,14 +167,14 @@ def view_attendance():
         _, num_days = calendar.monthrange(current_year, current_month)
 
         # Initialize attendance data for the month
-        monthly_attendance = defaultdict(lambda: ["Absent"] * num_days)  # Default to "Absent" for all days
+        monthly_attendance = defaultdict(lambda: ["A"] * num_days)  # Default to "Absent" for all days
 
         # Process attendance logs
         for att in attendance:
             if att.timestamp.year == current_year and att.timestamp.month == current_month:
                 day = att.timestamp.day  # Get the day of the month (1-31)
                 user_id = att.user_id
-                monthly_attendance[user_id][day - 1] = "Present"
+                monthly_attendance[user_id][day - 1] = "P"
 
         # Prepare data for rendering
         attendance_data = []
@@ -218,21 +218,21 @@ def export_attendance():
         _, num_days = calendar.monthrange(current_year, current_month)
 
         # Initialize attendance data for all users
-        monthly_attendance = defaultdict(lambda: ["Absent"] * num_days)  # Default all days to "Absent"
+        monthly_attendance = defaultdict(lambda: ["A"] * num_days)  # Default all days to "Absent"
 
         # Process attendance logs
         for att in attendance:
             if att.timestamp.year == current_year and att.timestamp.month == current_month:
                 day = att.timestamp.day  # Get the day of the month (1-31)
                 user_id = att.user_id
-                monthly_attendance[user_id][day - 1] = "Present"
+                monthly_attendance[user_id][day - 1] = "P"
 
         # Prepare CSV content
         output = StringIO()
         writer = csv.writer(output)
 
         # Write header row with days of the month
-        header = ["User ID", "Username"] + [f"Day {i}" for i in range(1, num_days + 1)]
+        header = ["User ID", "Username"] + [f"{i}" for i in range(1, num_days + 1)]
         writer.writerow(header)
 
         # Write attendance data for each user
