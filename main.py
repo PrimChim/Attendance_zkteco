@@ -1,7 +1,9 @@
-from flask import Flask, request, jsonify, render_template
 import csv
-from datetime import datetime
+import calendar
 from zk import ZK, const
+from datetime import datetime
+from collections import defaultdict
+from flask import Flask, request, jsonify, render_template
 
 # Device configuration
 DEVICE_IP = '192.168.1.201'
@@ -156,18 +158,34 @@ def view_attendance():
         # Create a mapping of user_id to username
         user_map = {user.user_id: user.name.strip() or "Unknown" for user in users}
 
-        # Process attendance data
-        attendance_data = []
+        # Determine current month and year
+        current_month = datetime.now().month
+        current_year = datetime.now().year
+
+        # Get the number of days in the month
+        _, num_days = calendar.monthrange(current_year, current_month)
+
+        # Initialize attendance data for the month
+        monthly_attendance = defaultdict(lambda: ["Absent"] * num_days)  # Default to "Absent" for all days
+
+        # Process attendance logs
         for att in attendance:
+            if att.timestamp.year == current_year and att.timestamp.month == current_month:
+                day = att.timestamp.day  # Get the day of the month (1-31)
+                user_id = att.user_id
+                monthly_attendance[user_id][day - 1] = "Present"
+
+        # Prepare data for rendering
+        attendance_data = []
+        for user_id, days in monthly_attendance.items():
             attendance_data.append({
-                'user_id': att.user_id,
-                'username': user_map.get(att.user_id, "Unknown"),  # Map user_id to username
-                'timestamp': att.timestamp.strftime('%Y-%m-%d %H:%M:%S'),
-                'status': att.status
+                'user_id': user_id,
+                'username': user_map.get(user_id, "Unknown"),
+                'days': days
             })
 
-        # Render the template and pass the data
-        return render_template('attendance.html', attendance=attendance_data)
+        # Render the template
+        return render_template('attendance.html', attendance=attendance_data, num_days=num_days)
 
     except Exception as e:
         return jsonify({'error': str(e)})
