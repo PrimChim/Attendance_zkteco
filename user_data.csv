@@ -1,0 +1,164 @@
+UID,Name,Privilege,Password,Group ID,User ID
+2,Ajay Majhi,User,,,2
+3,chandika majhi,User,,,3
+4,Rohit Majhi,User,,,4
+5,Ankit Majhi,User,,,5
+6,Badari Majhi,User,,,6
+7,Sarita Majhi,Admin,,,7
+8,Ujjwal Shrestha,User,,,8
+9,Insan Majhi,User,,,9
+10,Sarjiv Majhi,User,,,10
+11,Mohan Majhi,User,,,11
+12,Mandip,User,,,119
+13,NN-15,User,,,15
+14,NN-16,User,,,16
+15,NN-17,User,,,17
+16,NN-18,User,,,18
+17,NN-19,User,,,19
+18,Sarawatitwo,User,,,12
+19,Ujjawal,User,,,13
+20,NN-20,User,,,20
+21,NN-21,User,,,21
+22,NN-14,User,,,14
+23,NN-22,User,,,22
+24,NN-23,User,,,23
+25,NN-24,User,,,24
+26,NN-25,User,,,25
+27,NN-26,User,,,26
+28,NN-27,User,,,27
+29,NN-28,User,,,28
+30,NN-29,User,,,29
+31,NN-30,User,,,30
+32,NN-31,User,,,31
+33,NN-32,User,,,32
+34,Rajeshphuyal,User,,,115
+35,NN-218037,User,,,218037
+36,NN-154988,User,,,154988
+37,NN-154991,User,,,154991
+38,NN-132835,User,,,132835
+39,NN-184976,User,,,184976
+40,NN-154995,User,,,154995
+41,NN-189676,User,,,189676
+42,NN-196128,User,,,196128
+43,NN-224652,User,,,224652
+44,NN-115306,User,,,115306
+45,NN-90099,User,,,90099
+46,NN-184476,User,,,184476
+47,NN-103967,User,,,103967
+48,Sushma,User,,,151794
+49,NN-99548,User,,,99548
+50,NN-150691,User,,,150691
+51,NN-149260,User,,,149260
+52,NN-219539,User,,,219539
+53,NN-205641,User,,,205641
+54,NN-118347,User,,,118347
+55,NN-172186,User,,,172186
+56,NN-95091,User,,,95091
+57,NN-219538,User,,,219538
+58,NN-158884,User,,,158884
+59,NN-197124,User,,,197124
+60,NN-203597,User,,,203597
+61,Garan Majhai,User,,,101
+62,Ramji Majhi,User,,,102
+63,NN-194659,User,,,194659
+64,NN-126152,User,,,126152
+65,NN-192530,User,,,192530
+66,NN-129941,User,,,129941
+67,narayanrupakheti,User,,,120613
+68,RameMITTAL,User,,,168207
+69,SaraswatiSapkota,User,,,154997
+70,Sushila,User,,,108
+71,Sarita Majhi,User,,,103
+72,Saraswati Majhi,User,,,105
+73,Gajendra,User,,,109
+74,Mane Majhi,User,,,104
+75,Ashok,User,,,110
+76,Arbind Yadav,User,,,107
+77,Bimala,User,,,112
+78,NN-191485,User,,,191485
+79,Arjun,User,,,159811
+80,Manbahadur,User,,,203371
+81,Sarita,User,,,219533
+82,Gita,User,,,203068
+83,Diamond,User,,,231984
+84,Sudip,User,,,212693
+85,Nurendra,User,,,168274
+86,Hari,User,,,147261
+87,Shvam,User,,,180686
+88,Hem,User,,,201473
+89,Bhagawati,User,,,192323
+90,Prasanna,User,,,230512
+91,Birendra,User,,,195048
+92,Durga,User,,,231927
+93,Sujita,User,,,200306
+94,Reeti,User,,,223866
+95,Suman,User,,,234670
+96,Mera,User,,,113
+97,Mukti,User,,,171759
+98,Ganga,User,,,216103
+99,Purna,User,,,149760
+100,Pushkar,User,,,215365
+101,Yogendra,User,,,173872
+102,Ashok,User,,,173975
+103,DAYARAM,User,,,215440
+104,Prakash,User,,,217640
+105,Milan,User,,,219484
+106,Biju,User,,,219968
+107,Punam,User,,,231163
+108,Sarmila,User,,,217118
+109,TulasiRam,User,,,159395
+110,Sarada,User,,,231126
+111,Raju,User,,,231081
+112,Barnaguro,User,,,36
+113,Mohan,User,,,105313
+114,Bed,User,,,143188
+115,Birendra,User,,,132834
+116,Nanda,User,,,209017
+117,Baburam,User,,,196735
+118,Urmiladevi,User,,,41
+119,Binod,User,,,160981
+120,Kailarh,User,,,163693
+121,Shrijana,User,,,225779
+122,Kishore,User,,,118308
+123,Bickey,User,,,225056
+124,Ram,User,,,179793
+125,Purshottam,User,,,143010
+126,Naresh,User,,,206139
+127,Hari,User,,,224737
+128,Suresh,User,,,217077
+129,Rishiram,User,,,202323
+130,Pemba,User,,,192861
+131,Ashim,User,,,232178
+132,Hem,User,,,228828
+133,Chandra,User,,,123161
+134,Dil,User,,,146833
+135,Indal,User,,,231316
+136,Puspa,User,,,216503
+137,Gopal,User,,,225140
+138,Prem,User,,,42
+139,Sungava,User,,,169832
+140,Dhani,User,,,43
+141,Ganesh,User,,,181172
+142,Ramesh,User,,,119970
+143,Bishnu,User,,,179778
+144,Ganesh,User,,,205628
+145,Shreejana,User,,,198086
+146,Ashok,User,,,152546
+147,Gita,User,,,191282
+148,NN-999999999,Admin,9512,,999999999
+149,Tara Chandra Majhi,User,,,51
+150,Dil Badahur Majhi,User,,,52
+151,Sobit Basnet,User,,,53
+152,Sabitra Bhandari,User,,,54
+153,Januka Majhi,User,,,55
+154,Sarita Majhi,User,,,56
+155,Khambe,User,,,57
+156,Tulasha,User,,,58
+157,Sajan Majhi,User,,,59
+158,Santha,User,,,60
+159,Gyatri KHWAS,User,,,106
+160,Admin,Admin,9512,,888888888
+161,Rajendra Lohar,User,9512,,1
+162,Prakash,Admin,,,33
+163,Sabina,User,,,111
+164,Pritam,Admin,2580,,34
